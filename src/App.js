@@ -14,7 +14,6 @@ export default class App extends Component {
     error: null,
     query: "",
     page: 1,
-    TOKEN: "18953391-242970f94fd4bfb72dd77b6d1",
     largeImageURL: null,
   };
   componentDidUpdate(prevProps, prevState) {
@@ -30,11 +29,11 @@ export default class App extends Component {
   }
 
   fetchData = () => {
-    const { query, page, TOKEN } = this.state;
+    const { query, page } = this.state;
     this.setState({
       loading: true,
     });
-    DataApi.fetchDataWithQuery(query, page, TOKEN)
+    DataApi.fetchDataWithQuery(query, page)
       .then((data) => {
         if (data.length < 1) {
           this.setState({ error: true });
